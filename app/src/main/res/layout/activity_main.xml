@@ -10,8 +10,8 @@
     android:padding="20dp">
 
     <ImageView
-        android:layout_width="110dp"
-        android:layout_height="103dp"
+        android:layout_width="144dp"
+        android:layout_height="125dp"
         android:src="@drawable/splash" />
 
     <EditText
