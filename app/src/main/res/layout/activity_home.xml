@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:text="System Dashboard"
+        android:text="@string/system_dashboard"
         android:textColor="#fff"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -43,25 +43,15 @@
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_gravity="center"
+                android:text="@string/attestation"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:drawableTopCompat="@drawable/home" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/home" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ATTESTATION"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -77,25 +67,14 @@
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/language" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LENS"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:layout_gravity="center"
+                android:text="@string/lens"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:drawableTopCompat="@drawable/language" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -128,7 +107,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PERSISTENCE"
+                    android:text="@string/persistence"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -147,25 +126,14 @@
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/widgets" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SYSTEM"
-                    android:textAlignment="center"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:layout_gravity="center"
+                android:text="@string/system"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:drawableTopCompat="@drawable/widgets" />
         </androidx.cardview.widget.CardView>
 
     </GridLayout>
