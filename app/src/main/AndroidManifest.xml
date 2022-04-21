@@ -8,6 +8,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -17,9 +20,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:name=".LoginActivity"
+            android:exported="true"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
