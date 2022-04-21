@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Attesta</string>
+    <string name="app_name">ATTESTA</string>
     <string name="system_dashboard">System Dashboard</string>
     <string name="image_icon_for_attestation_activity">Image icon for attestation activity</string>
     <string name="attestation">ATTESTATION</string>

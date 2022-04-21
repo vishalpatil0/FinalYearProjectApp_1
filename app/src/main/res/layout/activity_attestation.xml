@@ -1,22 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ /*
-  ~  * PubMatic Inc. ("PubMatic") CONFIDENTIAL
-  ~  * Unpublished Copyright (c) 2006-2022 PubMatic, All Rights Reserved.
-  ~  *
-  ~  * NOTICE:  All information contained herein is, and remains the property of PubMatic. The intellectual and technical concepts contained
-  ~  * herein are proprietary to PubMatic and may be covered by U.S. and Foreign Patents, patents in process, and are protected by trade secret or copyright law.
-  ~  * Dissemination of this information or reproduction of this material is strictly forbidden unless prior written permission is obtained
-  ~  * from PubMatic.  Access to the source code contained herein is hereby forbidden to anyone except current PubMatic employees, managers or contractors who have executed
-  ~  * Confidentiality and Non-disclosure agreements explicitly covering such access or to such other persons whom are directly authorized by PubMatic to access the source code and are subject to confidentiality and nondisclosure obligations with respect to the source code.
-  ~  *
-  ~  * The copyright notice above does not evidence any actual or intended publication or disclosure  of  this source code, which includes
-  ~  * information that is confidential and/or proprietary, and is a trade secret, of  PubMatic.   ANY REPRODUCTION, MODIFICATION, DISTRIBUTION, PUBLIC  PERFORMANCE,
-  ~  * OR PUBLIC DISPLAY OF OR THROUGH USE  OF THIS  SOURCE CODE  WITHOUT  THE EXPRESS WRITTEN CONSENT OF PUBMATIC IS STRICTLY PROHIBITED, AND IN VIOLATION OF APPLICABLE
-  ~  * LAWS AND INTERNATIONAL TREATIES.  THE RECEIPT OR POSSESSION OF  THIS SOURCE CODE AND/OR RELATED INFORMATION DOES NOT CONVEY OR IMPLY ANY RIGHTS
-  ~  * TO REPRODUCE, DISCLOSE OR DISTRIBUTE ITS CONTENTS, OR TO MANUFACTURE, USE, OR SELL ANYTHING THAT IT  MAY DESCRIBE, IN WHOLE OR IN PART.
-  ~  */
-  -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -25,11 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".AttestationActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/originalImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"/>
+    <ImageView
+        android:id="@+id/formImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/originalImage"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/originalImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="vishal patil"
-        tools:layout_editor_absoluteX="257dp"
-        tools:layout_editor_absoluteY="365dp" />
+        app:layout_constraintRight_toRightOf="@id/originalImage"
+        app:layout_constraintBottom_toBottomOf="@id/originalImage"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@id/formImage"
+        app:layout_constraintBottom_toBottomOf="@id/formImage"
+        android:id="@+id/formImageButton"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
