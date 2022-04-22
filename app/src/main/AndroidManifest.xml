@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SplashScreen">
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".AttestationActivity"
             android:exported="false" />
         <activity
