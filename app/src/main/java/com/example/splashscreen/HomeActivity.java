@@ -9,18 +9,10 @@ import android.view.View;
 
 public class HomeActivity extends AppCompatActivity {
 
-    CardView attestation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        attestation=(CardView) findViewById(R.id.attestation);
-        attestation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(HomeActivity.this,AttestationActivity.class);
-                startActivity(i);
-            }
-        });
+
     }
 }
