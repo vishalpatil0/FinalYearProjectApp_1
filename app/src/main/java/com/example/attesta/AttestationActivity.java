@@ -1,11 +1,9 @@
-package com.example.splashscreen;
+package com.example.attesta;
 
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;

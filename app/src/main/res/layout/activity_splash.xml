@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/antic"
-        android:text="An Image Processing Aplication"
+        android:text="An Image Processing Application"
         android:textColor="#533E78"
         android:textSize="25sp"
         android:textStyle="bold"

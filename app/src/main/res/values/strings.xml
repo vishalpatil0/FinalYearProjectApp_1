@@ -7,4 +7,6 @@
     <string name="persistence">PERSISTENCE</string>
     <string name="lens">LENS</string>
     <string name="full_name">Full Name</string>
+    <string name="already_registered_login_here">Already Registered? Login Here</string>
+    <string name="duration_time">1000</string>
 </resources>

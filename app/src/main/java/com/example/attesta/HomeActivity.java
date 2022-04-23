@@ -1,4 +1,4 @@
-package com.example.splashscreen;
+package com.example.attesta;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;

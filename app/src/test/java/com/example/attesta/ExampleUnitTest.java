@@ -1,4 +1,4 @@
-package com.example.splashscreen;
+package com.example.attesta;
 
 import org.junit.Test;
 
