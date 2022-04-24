@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,9 +20,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -31,9 +39,11 @@ public class RegisterActivity extends AppCompatActivity {
     private ImageView passwordEye,confirmPasswordEye;
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
     private Button register;
-    final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    final String fullNamePattern = "^[a-zA-Z]*$";
+    final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+",fullNamePattern = "^[a-zA-Z]*$";
+    private String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
         minimumPassword=findViewById(R.id.minimumPassword);
 
         firebaseAuth=FirebaseAuth.getInstance();     //getting current instance of database from firebase to perform various action on database.
+        firebaseFirestore=FirebaseFirestore.getInstance();
 
         if(firebaseAuth.getCurrentUser()!=null)
         {
@@ -113,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Boolean registerFlag=true;
                 String emailValidate=email.getText().toString().trim();
-                String fullNameValidate=full_name.getText().toString().trim();
+                String fullNameValidate=full_name.getText().toString().trim().replaceAll("\\s","");
                 String passwordValidate=password.getText().toString().trim();
                 String confirmPasswordValidate=confirm_password.getText().toString().trim();
                 if(emailValidate.length()>0 && fullNameValidate.length()>0 && passwordValidate.length()>0)
@@ -153,6 +164,22 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(RegisterActivity.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
+                                        userID=firebaseAuth.getCurrentUser().getUid();
+                                        DocumentReference documentReference=firebaseFirestore.collection("Users").document(userID);
+                                        Map<String,Object> user= new HashMap<>();
+                                        user.put("fName",full_name.getText().toString().trim());
+                                        user.put("email",emailValidate);
+                                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Log.d("User Creation","On Success : User profile created for "+userID);
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.d("Failed user creation","OnFailure : "+e.toString());
+                                            }
+                                        });
                                         startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
                                         finish();
                                     }else

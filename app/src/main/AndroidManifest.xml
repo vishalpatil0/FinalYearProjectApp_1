@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name="com.example.attesta.LoginActivity"
-            android:exported="true" />
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

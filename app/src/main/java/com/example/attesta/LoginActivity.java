@@ -38,6 +38,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        firebaseAuth=FirebaseAuth.getInstance();
+
+        if(firebaseAuth.getCurrentUser()!=null)
+        {
+            startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+            finish();
+        }
         login=findViewById(R.id.login);
         signup=findViewById(R.id.signup);
         email=findViewById(R.id.loginEmail);
@@ -45,7 +52,6 @@ public class LoginActivity extends AppCompatActivity {
         invalidEmail=findViewById(R.id.invalidEmail);
         progressBar=findViewById(R.id.loginProgressBar);
         showHidePassword=findViewById(R.id.showHidePassword);
-        firebaseAuth=FirebaseAuth.getInstance();
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
