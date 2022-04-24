@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "429038469408",
+    "project_id": "attesta-3b4d4",
+    "storage_bucket": "attesta-3b4d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429038469408:android:bd94a3f42184ec0f61d745",
+        "android_client_info": {
+          "package_name": "com.example.attesta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "429038469408-jk792eafev9k8ot487meqeu1sgcklf86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBpXB-Oci6HEn561n5cS1Amj6Kj6uUKxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "429038469408-jk792eafev9k8ot487meqeu1sgcklf86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

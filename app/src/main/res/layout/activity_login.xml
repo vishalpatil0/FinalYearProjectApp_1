@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,43 +9,83 @@
     android:gravity="center"
     android:padding="20dp">
 
+
     <ImageView
+        android:id="@+id/loginSplashLogo"
         android:layout_width="144dp"
         android:layout_height="125dp"
-        android:src="@drawable/splash" />
+        android:layout_marginTop="108dp"
+        android:src="@drawable/splash"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/loginEmail"
         android:layout_width="match_parent"
-        android:inputType="textPersonName"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:padding="15dp"
         android:background="@drawable/shapeemail"
-        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawableStart="@drawable/email"
         android:drawablePadding="10dp"
         android:hint="Email"
+        android:inputType="textPersonName"
+        android:padding="15dp"
         android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
         android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginSplashLogo"
+        app:layout_constraintVertical_bias="0.065"/>
+
+    <TextView
+        android:id="@+id/invalidEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Enter a valid email address"
+        android:visibility="invisible"
+        android:textColor="#FF3232"
+        app:layout_constraintBottom_toTopOf="@id/loginPassword"
+        app:layout_constraintHorizontal_bias="0.258"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginEmail"
+        app:layout_constraintVertical_bias="0.0"
+        app:drawableLeftCompat="@drawable/error" />
 
     <EditText
+        android:id="@+id/loginPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:layout_margin="10dp"
-        android:padding="15dp"
         android:background="@drawable/shapeemail"
-        android:drawableLeft="@drawable/ic_lock_black_24dp"
+        android:drawableStart="@drawable/ic_lock_black_24dp"
         android:drawablePadding="10dp"
         android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="15dp"
         android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
         android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.327"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginEmail"
+        app:layout_constraintVertical_bias="0.037" />
 
     <LinearLayout
+        android:id="@+id/loginLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginPassword">
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -67,9 +107,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="0dp"
             android:textColor="@color/white"
-            android:drawableLeft="@drawable/ic_lock_open_black_24dp"
             android:drawablePadding="6dp"
-            android:padding="4dp"/>
+            android:padding="4dp"
+            app:drawableLeftCompat="@drawable/ic_lock_open_black_24dp" />
 
     </LinearLayout>
 
@@ -84,21 +124,30 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="0dp"
-        android:background="@drawable/shapelogin"/>
+        android:background="@drawable/shapelogin"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginLinearLayout"
+        />
 
     <Button
         android:id="@+id/signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:shadowColor="@android:color/transparent"
-        android:padding="15dp"
-        android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="0dp"
         android:background="@drawable/shapesignup"
-        android:textColor="@color/white"/>
+        android:padding="15dp"
+        android:shadowColor="@android:color/transparent"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login"
+        app:layout_constraintVertical_bias="0.07" />
 
     <ProgressBar
         android:id="@+id/loginProgressBar"
@@ -106,6 +155,9 @@
         android:layout_width="match_parent"
         android:visibility="invisible"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signup" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

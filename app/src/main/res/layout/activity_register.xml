@@ -39,6 +39,36 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registerSplashLogo" />
 
+    <TextView
+        android:id="@+id/invalidRegisterFullName"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Enter a valid name"
+        android:textColor="#FF3232"
+        app:drawableLeftCompat="@drawable/error"
+        app:layout_constraintBottom_toTopOf="@id/registerEmail"
+        app:layout_constraintHorizontal_bias="0.221"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fullname"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/invalidRegisterEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Enter a valid email address"
+        android:visibility="invisible"
+        android:textColor="#FF3232"
+        app:drawableLeftCompat="@drawable/error"
+        app:layout_constraintBottom_toTopOf="@id/registerPassword"
+        app:layout_constraintHorizontal_bias="0.278"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerEmail"
+        app:layout_constraintVertical_bias="0.0" />
+
     <EditText
         android:id="@+id/registerEmail"
         android:inputType="textEmailAddress"
@@ -48,7 +78,7 @@
         android:layout_marginHorizontal="30dp"
         android:padding="15dp"
         android:background="@drawable/shapeemail"
-        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawableStart="@drawable/email"
         android:drawablePadding="10dp"
         android:hint="Email"
         android:textColor="@color/white"
@@ -89,6 +119,7 @@
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:drawablePadding="10dp"
         android:hint="Confirm Password"
+        android:enabled="false"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textColorHighlight="@color/white"
