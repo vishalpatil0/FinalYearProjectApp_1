@@ -190,7 +190,7 @@ public class RegisterActivity extends AppCompatActivity {
         full_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                String fullNameValidate=full_name.getText().toString().trim();
+                String fullNameValidate=full_name.getText().toString().trim().replaceAll("\\s","");
                 if(fullNameValidate.length()>0)
                 {
                     if(!fullNameValidate.matches(fullNamePattern))
