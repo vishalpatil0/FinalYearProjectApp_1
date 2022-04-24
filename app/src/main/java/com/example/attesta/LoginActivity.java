@@ -66,7 +66,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(LoginActivity.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
+                    email.setHint("Email field is empty");
+                    email.setHintTextColor(Color.RED);
                 }
             }
         });
@@ -75,7 +76,10 @@ public class LoginActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                email.setHint("Email");
+                email.setHintTextColor(getColor(R.color.white));
+            }
 
             @Override
             public void afterTextChanged(Editable editable) {

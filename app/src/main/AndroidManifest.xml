@@ -7,7 +7,7 @@
         android:icon="@drawable/splash"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SplashScreen">
+        android:theme="@style/Theme.Attesta">
         <activity
             android:name="com.example.attesta.RegisterActivity"
             android:exported="false" />

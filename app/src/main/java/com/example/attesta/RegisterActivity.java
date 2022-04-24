@@ -7,9 +7,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,8 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private TextView alreadyUser,invalidEmail,invalidFullName;
+    private TextView alreadyUser,invalidEmail,invalidFullName,differentPasswords;
     private EditText full_name,email,password,confirm_password;
+    private ImageView passwordEye,confirmPasswordEye;
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
     private Button register;
@@ -40,6 +44,9 @@ public class RegisterActivity extends AppCompatActivity {
         invalidEmail=findViewById(R.id.invalidRegisterEmail);
         register=findViewById(R.id.register);
         invalidFullName=findViewById(R.id.invalidRegisterFullName);
+        passwordEye=findViewById(R.id.passwordEye);
+        confirmPasswordEye=findViewById(R.id.confirmPasswordEye);
+        differentPasswords=findViewById(R.id.differentPassword);
 
         firebaseAuth=FirebaseAuth.getInstance();     //getting current instance of database from firebase to perform various action on database.
 
@@ -95,31 +102,58 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Boolean registerFlag=true;
                 String emailValidate=email.getText().toString().trim();
-                if(emailValidate.length()>0)
+                String fullNameValidate=full_name.getText().toString().trim();
+                String passwordValidate=password.getText().toString().trim();
+                String confirmPasswordValidate=confirm_password.getText().toString().trim();
+                if(emailValidate.length()>0 && fullNameValidate.length()>0 && passwordValidate.length()>0)
                 {
                     if(!emailValidate.matches(emailPattern))
                     {
+                        registerFlag=false;
                         invalidEmail.setVisibility(View.VISIBLE);
                         email.setBackgroundResource(R.drawable.shaperedemail);
                         email.setTextColor(Color.RED);
                         email.setCompoundDrawablesWithIntrinsicBounds(R.drawable.red_email,0,0,0);
                     }
-                }
-                else
-                {
-                    email.setHint("Email field is empty");
-                    email.setHintTextColor(Color.RED);
-                }
-                String fullNameValidate=full_name.getText().toString().trim();
-                if(fullNameValidate.length()>0)
-                {
+                    if(!fullNameValidate.matches(fullNamePattern))
+                    {
+                        registerFlag=false;
+                        invalidFullName.setVisibility(View.VISIBLE);
+                        full_name.setBackgroundResource(R.drawable.shaperedemail);
+                        full_name.setTextColor(Color.RED);
+                        full_name.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_person_red,0,0,0);
+                    }
+                    if(registerFlag)
+                    {
+                        String firstPassword=password.getText().toString().trim();
+                        String confirmPassword=confirm_password.getText().toString().trim();
+                        if(firstPassword.equals(confirmPassword))
+                        {
 
+                        }
+                        else
+                        {
+                            differentPasswords.setVisibility(View.VISIBLE);
+                            confirm_password.setTextColor(Color.RED);
+                        }
+                    }
                 }
                 else
                 {
-                    full_name.setHint("FullName field is empty");
-                    full_name.setHintTextColor(Color.RED);
+                    if(emailValidate.length()==0) {
+                        email.setHint("Email field is empty");
+                        email.setHintTextColor(Color.RED);
+                    }
+                    if(fullNameValidate.length()==0) {
+                        full_name.setHint("FullName field is empty");
+                        full_name.setHintTextColor(Color.RED);
+                    }
+                    if(passwordValidate.length()==0){
+                        password.setHint("Password field is empty");
+                        password.setHintTextColor(Color.RED);
+                    }
                 }
             }
         });
@@ -173,14 +207,25 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String firstPassword=password.getText().toString().trim();
+                password.setHintTextColor(getColor(R.color.white));
+                password.setHint("Password");
                 if(firstPassword.length()>0)
                 {
-
+                    passwordEye.setVisibility(View.VISIBLE);
+                    passwordEye.setClickable(true);
                     confirm_password.setEnabled(true);
                 }
                 else
                 {
+                    differentPasswords.setVisibility(View.INVISIBLE);
+                    passwordEye.setVisibility(View.INVISIBLE);
+                    passwordEye.setClickable(false);
                     confirm_password.setEnabled(false);
+                    confirmPasswordEye.setImageResource(R.drawable.password_visible);
+                    confirmPasswordEye.setClickable(false);
+                    confirmPasswordEye.setVisibility(View.INVISIBLE);
+                    confirm_password.setText("");
+                    confirm_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_black_24dp,0,0,0);
                 }
             }
 
@@ -198,8 +243,20 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                differentPasswords.setVisibility(View.INVISIBLE);
+                confirm_password.setTextColor(getColor(R.color.white));
                 String firstPassword=password.getText().toString().trim();
                 String confirmPassword=confirm_password.getText().toString().trim();
+                if(confirmPassword.length()>0)
+                {
+                    confirmPasswordEye.setClickable(true);
+                    confirmPasswordEye.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    confirmPasswordEye.setVisibility(View.INVISIBLE);
+                    confirmPasswordEye.setClickable(false);
+                }
                 if(firstPassword.equals(confirmPassword))
                 {
                     confirm_password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_green,0,0,0);
@@ -213,6 +270,38 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+
+        passwordEye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance()))
+                {
+                    passwordEye.setImageResource(R.drawable.password_invisible);
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+                else
+                {
+                    passwordEye.setImageResource(R.drawable.password_visible);
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
+
+        confirmPasswordEye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(confirm_password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance()))
+                {
+                    confirmPasswordEye.setImageResource(R.drawable.password_invisible);
+                    confirm_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+                else
+                {
+                    confirmPasswordEye.setImageResource(R.drawable.password_visible);
+                    confirm_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
             }
         });
     }
