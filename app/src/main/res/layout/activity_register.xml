@@ -107,6 +107,21 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerEmail" />
 
+    <TextView
+        android:id="@+id/minimumPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  Password must be >= 6 characters"
+        android:textColor="#FF3232"
+        android:visibility="invisible"
+        app:drawableLeftCompat="@drawable/error"
+        app:layout_constraintBottom_toTopOf="@id/registerConfirmPassword"
+        app:layout_constraintHorizontal_bias="0.368"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerPassword"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageView
         android:id="@+id/passwordEye"
         android:layout_width="wrap_content"

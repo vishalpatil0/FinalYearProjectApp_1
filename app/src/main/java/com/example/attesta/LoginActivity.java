@@ -30,20 +30,14 @@ public class LoginActivity extends AppCompatActivity {
         email=findViewById(R.id.loginEmail);
         password=findViewById(R.id.loginPassword);
         invalidEmail=findViewById(R.id.invalidEmail);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(LoginActivity.this,HomeActivity.class);
-                startActivity(i);
-            }
-        });
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(i);
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
         });
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,8 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     if(emailValidate.matches(emailPattern))
                     {
-                        Intent i=new Intent(LoginActivity.this,HomeActivity.class);
-                        startActivity(i);
+                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                         finish();
                     }
                     else
@@ -71,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -93,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
         email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {

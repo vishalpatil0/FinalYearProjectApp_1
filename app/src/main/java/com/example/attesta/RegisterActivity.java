@@ -1,5 +1,6 @@
 package com.example.attesta;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,12 +18,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private TextView alreadyUser,invalidEmail,invalidFullName,differentPasswords;
+    private TextView alreadyUser,invalidEmail,invalidFullName,differentPasswords,minimumPassword;
     private EditText full_name,email,password,confirm_password;
     private ImageView passwordEye,confirmPasswordEye;
     private ProgressBar progressBar;
@@ -47,14 +51,19 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEye=findViewById(R.id.passwordEye);
         confirmPasswordEye=findViewById(R.id.confirmPasswordEye);
         differentPasswords=findViewById(R.id.differentPassword);
+        minimumPassword=findViewById(R.id.minimumPassword);
 
         firebaseAuth=FirebaseAuth.getInstance();     //getting current instance of database from firebase to perform various action on database.
 
+        if(firebaseAuth.getCurrentUser()!=null)
+        {
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+            finish();
+        }
         alreadyUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(i);
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 finish();
             }
         });
@@ -125,13 +134,33 @@ public class RegisterActivity extends AppCompatActivity {
                         full_name.setTextColor(Color.RED);
                         full_name.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_person_red,0,0,0);
                     }
+                    if(passwordValidate.length()<6)
+                    {
+                        registerFlag=false;
+                        minimumPassword.setVisibility(View.VISIBLE);
+                    }
                     if(registerFlag)
                     {
                         String firstPassword=password.getText().toString().trim();
                         String confirmPassword=confirm_password.getText().toString().trim();
                         if(firstPassword.equals(confirmPassword))
                         {
+                            progressBar.setVisibility(View.VISIBLE);
 
+                            //now register the use with firebase database
+                            firebaseAuth.createUserWithEmailAndPassword(emailValidate,confirmPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(RegisterActivity.this, "User Created Successfully", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                                        finish();
+                                    }else
+                                    {
+                                        Toast.makeText(RegisterActivity.this, "Error ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                         }
                         else
                         {
@@ -209,6 +238,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String firstPassword=password.getText().toString().trim();
                 password.setHintTextColor(getColor(R.color.white));
                 password.setHint("Password");
+                minimumPassword.setVisibility(View.INVISIBLE);
                 if(firstPassword.length()>0)
                 {
                     passwordEye.setVisibility(View.VISIBLE);

@@ -18,8 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         Attestation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(HomeActivity.this,AttestationActivity.class);
-                startActivity(i);
+                startActivity(new Intent(HomeActivity.this,AttestationActivity.class));
             }
         });
     }
