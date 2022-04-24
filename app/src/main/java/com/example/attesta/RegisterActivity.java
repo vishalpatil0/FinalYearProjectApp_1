@@ -157,6 +157,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         finish();
                                     }else
                                     {
+                                        progressBar.setVisibility(View.INVISIBLE);
                                         Toast.makeText(RegisterActivity.this, "Error ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -310,11 +311,13 @@ public class RegisterActivity extends AppCompatActivity {
                 {
                     passwordEye.setImageResource(R.drawable.password_invisible);
                     password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    password.setSelection(password.getText().length());
                 }
                 else
                 {
                     passwordEye.setImageResource(R.drawable.password_visible);
                     password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    password.setSelection(password.getText().length());
                 }
             }
         });
@@ -326,11 +329,13 @@ public class RegisterActivity extends AppCompatActivity {
                 {
                     confirmPasswordEye.setImageResource(R.drawable.password_invisible);
                     confirm_password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    confirm_password.setSelection(confirm_password.getText().length());
                 }
                 else
                 {
                     confirmPasswordEye.setImageResource(R.drawable.password_visible);
                     confirm_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    confirm_password.setSelection(confirm_password.getText().length());
                 }
             }
         });

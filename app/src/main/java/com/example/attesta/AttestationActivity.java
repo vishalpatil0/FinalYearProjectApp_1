@@ -45,11 +45,17 @@ public class AttestationActivity extends AppCompatActivity {
         {
             Uri uri=data.getData();
             orignalImage.setImageURI(uri);
+            //Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),uri);
+            //originalImage.setImageBitmap(bitmap);
         }
         else if(requestCode==102)
         {
             Uri uri=data.getData();
             formImage.setImageURI(uri);
+            //formImage.invalidate();
+            //BitmapDrawable bitmapDrawable=(BitmapDrawable) formImage.getDrawable();
+            //Bitmap bitmap=bitmapDrawable.getBitmap();
+            //originalImage.setImageBitmap(bitmap);
         }
     }
 }
