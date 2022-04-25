@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private CardView Attestation;
+    private CardView Attestation,lens;
     private TextView currentUser;
     private ImageView logout;
     private FirebaseAuth firebaseAuth;
@@ -35,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         Attestation=(CardView) findViewById(R.id.attestation);
         logout=findViewById(R.id.logout);
         currentUser=findViewById(R.id.currentUser);
+        lens=findViewById(R.id.lens);
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
         rememberMe=getIntent().getBooleanExtra("status",true);
@@ -63,6 +64,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeActivity.this,AttestationActivity.class));
+            }
+        });
+        lens.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this,LensActivity.class));
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {
