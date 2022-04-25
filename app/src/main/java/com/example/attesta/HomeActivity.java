@@ -27,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
     private String UserID;
+    private Boolean rememberMe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         currentUser=findViewById(R.id.currentUser);
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
-
+        rememberMe=getIntent().getBooleanExtra("status",true);
             //getting UID of current user.
             UserID = firebaseAuth.getCurrentUser().getUid();
 
@@ -72,5 +73,13 @@ public class HomeActivity extends AppCompatActivity {
                     finish();
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(!rememberMe){
+            FirebaseAuth.getInstance().signOut();
+        }
     }
 }

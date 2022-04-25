@@ -13,6 +13,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView invalidEmail;
     private ProgressBar progressBar;
     final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    private CheckBox rememberMe;
     private FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         invalidEmail=findViewById(R.id.invalidEmail);
         progressBar=findViewById(R.id.loginProgressBar);
         showHidePassword=findViewById(R.id.showHidePassword);
+        rememberMe=findViewById(R.id.rememberMe);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +78,9 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful())
                                 {
-                                    startActivity(new Intent(LoginActivity.this,HomeActivity.class));
+                                    Intent i=new Intent(LoginActivity.this,HomeActivity.class);
+                                    i.putExtra("status",rememberMe.isChecked());
+                                    startActivity(i);
                                     finish();
                                 }
                                 else
