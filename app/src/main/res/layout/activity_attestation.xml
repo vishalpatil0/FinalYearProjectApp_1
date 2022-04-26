@@ -10,6 +10,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:background="@drawable/image_border"
         android:id="@+id/originalImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -23,6 +24,7 @@
         android:layout_height="200dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/image_border"
         app:layout_constraintTop_toBottomOf="@+id/originalImage"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
@@ -31,10 +33,12 @@
         android:id="@+id/originalImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/camera_icon"
         app:layout_constraintRight_toRightOf="@id/originalImage"
         app:layout_constraintBottom_toBottomOf="@id/originalImage"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
+        android:src="@drawable/camera_icon"
         android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="@id/formImage"
         app:layout_constraintBottom_toBottomOf="@id/formImage"
