@@ -18,7 +18,8 @@
             android:exported="false" />
         <activity
             android:name=".AttestationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".HomeActivity"/>
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
