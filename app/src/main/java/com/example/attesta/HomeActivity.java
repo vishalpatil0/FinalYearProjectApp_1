@@ -30,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     private Boolean rememberMe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         Attestation=(CardView) findViewById(R.id.attestation);
