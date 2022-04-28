@@ -10,5 +10,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
+    <color name="light_grey">#EDEDED</color>
     <color name="signupColor">#066e8a</color>
 </resources>
