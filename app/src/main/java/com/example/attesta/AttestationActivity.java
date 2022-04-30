@@ -22,8 +22,7 @@ public class AttestationActivity extends AppCompatActivity{
 
     private FloatingActionButton originalImageButton,formImageButton;
     private ImageView originalImage,formImage;
-    private Button validate,ready;
-    private String originalImageString="vishal",formImageString;
+    private Button validate;
     private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,15 +64,33 @@ public class AttestationActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                if(originalImage.getDrawable()!=null)
+                if(originalImage.getDrawable()!=null && formImage.getDrawable()!=null)
                 {
-                    BitmapDrawable bitmapDrawable= (BitmapDrawable) originalImage.getDrawable();
-                    Bitmap originalImageBitmap = bitmapDrawable.getBitmap();
-                    String UID="";
+                    BitmapDrawable bitmapDrawable1= (BitmapDrawable) originalImage.getDrawable();
+                    Bitmap originalImageBitmap = bitmapDrawable1.getBitmap();
+
+                    BitmapDrawable bitmapDrawable2= (BitmapDrawable) formImage.getDrawable();
+                    Bitmap formImageBitmap= bitmapDrawable2.getBitmap();
+
+                    String UID="",FormUID="";
                     Validation validation=new Validation(AttestationActivity.this,originalImageBitmap);
                     UID=validation.detect();
-                    Toast.makeText(AttestationActivity.this, "Asim : "+UID, Toast.LENGTH_SHORT).show();
+                    UID=validation.extractor(UID);
 
+                    validation.setImageBitmap(formImageBitmap);
+                    FormUID=validation.detect();
+                    FormUID=validation.extractor(FormUID);
+
+                    if(UID.equals(FormUID))
+                    {
+                        Toast.makeText(AttestationActivity.this, "Verified", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(AttestationActivity.this, "Incorrect Match", Toast.LENGTH_SHORT).show();
+                    }
+
+//                   Toast.makeText(AttestationActivity.this,"form :"+FormUID, Toast.LENGTH_LONG).show();
                 }
                 else
                 {

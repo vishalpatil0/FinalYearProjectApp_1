@@ -19,7 +19,6 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 import java.util.List;
 
 public class Validation {
-    private int startIndex=-1,endIndex=0,count=0;
     private InputImage originalImage;
     private Context context;
     private String UID_Data="";
@@ -59,7 +58,6 @@ public class Validation {
                                     }
 
                                 });
-
         //Infinite loop
         while(true)
         {
@@ -90,5 +88,40 @@ public class Validation {
             }
         }
         return UID[0];
+    }
+    public String extractor(String str)
+    {
+        int startIndex=-1,endIndex=0,count=0;
+        char stringArray[] = str.toCharArray();
+        for (int i = 0; i < stringArray.length; i++) {
+            if(count==12)
+            {
+                endIndex=i;
+                break;
+            }
+            if(stringArray[i]>=48 && stringArray[i]<=57)
+            {
+                if(startIndex==-1)
+                {
+                    startIndex=i;
+                }
+                count++;
+            }
+            else
+            {
+                startIndex=-1;
+                count=0;
+            }
+        }
+        if(startIndex==-1)
+        {
+            Toast.makeText(context, "UID extraction failed", Toast.LENGTH_SHORT).show();
+            return "000000000000";
+        }
+        return str.substring(startIndex,endIndex);
+    }
+    public void setImageBitmap(Bitmap bitmap)
+    {
+        this.originalImage=InputImage.fromBitmap(bitmap,0);
     }
 }
