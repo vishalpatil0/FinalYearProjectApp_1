@@ -4,7 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".LensTabs.TranslationFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CT_Parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/lensImage"
+            android:layout_width="350dp"
+            android:layout_height="361dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/image_border"
+            android:scaleType="fitCenter"
+            app:layout_constraintLeft_toLeftOf="@id/CT_Parent"
+            app:layout_constraintRight_toRightOf="@id/CT_Parent"
+            app:layout_constraintTop_toTopOf="@id/CT_Parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/lensImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/camera_icon"
+            app:layout_constraintRight_toRightOf="@id/lensImage"
+            app:layout_constraintBottom_toBottomOf="@id/lensImage"/>
+
+        <Button
+            android:id="@+id/detect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/lensImage"
+            app:layout_constraintBottom_toBottomOf="@id/CT_Parent"
+            app:layout_constraintLeft_toLeftOf="@id/CT_Parent"
+            app:layout_constraintRight_toRightOf="@id/CT_Parent"
+            android:text="Detect"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

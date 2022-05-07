@@ -18,6 +18,7 @@ public class Guidlines extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Guidlines.this,AttestationActivity.class));
+                finish();
             }
         });
     }
