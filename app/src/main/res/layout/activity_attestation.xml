@@ -7,6 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".AttestationActivity">
 
+    <TextView
+        android:id="@+id/txtLabelOriginal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="Original Adhar :"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/originalImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="208dp"
+        android:text="Custom Form :"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/formImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtLabelOriginal"
+        app:layout_constraintVertical_bias="1.0" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -16,7 +45,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:scaleType="fitCenter"/>
     <ImageView
         android:id="@+id/formImage"
@@ -27,7 +56,7 @@
         android:background="@drawable/image_border"
         app:layout_constraintTop_toBottomOf="@+id/originalImage"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/originalImageButton"
@@ -46,15 +75,17 @@
 
     <Button
         android:id="@+id/validate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Validate"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="VALIDATE"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/formImage"
-        app:layout_constraintVertical_bias="0.913" />
+        app:layout_constraintVertical_bias="0.878"
+        android:background="@drawable/btn_back"
+        />
 
     <ProgressBar
         android:id="@+id/progressBar"

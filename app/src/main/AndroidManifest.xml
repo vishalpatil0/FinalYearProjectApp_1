@@ -3,7 +3,8 @@
     package="com.example.attesta">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/splash"
@@ -11,16 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Attesta">
         <activity
+            android:name=".Guidlines"
+            android:exported="false" />
+        <activity
             android:name=".LensActivity"
             android:exported="false"
-            android:parentActivityName=".HomeActivity"/>
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".AttestationActivity"
             android:exported="false"
-            android:parentActivityName=".HomeActivity"/>
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />

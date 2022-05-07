@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         Attestation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,AttestationActivity.class));
+                startActivity(new Intent(HomeActivity.this,Guidlines.class));
             }
         });
         lens.setOnClickListener(new View.OnClickListener() {
