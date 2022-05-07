@@ -23,6 +23,7 @@ public class AttestationActivity extends AppCompatActivity{
     private FloatingActionButton originalImageButton,formImageButton;
     private ImageView originalImage,formImage;
     private Button validate;
+    private ImageView checkMark;
     private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class AttestationActivity extends AppCompatActivity{
         formImage=(ImageView)findViewById(R.id.formImage);
         validate=(Button)findViewById(R.id.validate);
         progressBar=findViewById(R.id.progressBar);
+        checkMark=findViewById(R.id.checkMark);
 
         /**
          * originalImageButton on click listener to launch the Imagepicker library
@@ -83,14 +85,16 @@ public class AttestationActivity extends AppCompatActivity{
 
                     if(UID.equals(FormUID))
                     {
-                        Toast.makeText(AttestationActivity.this, "Verified", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AttestationActivity.this, "Verified", Toast.LENGTH_LONG).show();
+                        checkMark.setImageResource(R.drawable.check_mark);
+                        checkMark.setVisibility(View.VISIBLE);
                     }
                     else
                     {
-                        Toast.makeText(AttestationActivity.this, "Incorrect Match", Toast.LENGTH_SHORT).show();
+                        checkMark.setImageResource(R.drawable.cross_check_mark);
+                        checkMark.setVisibility(View.VISIBLE);
+                        Toast.makeText(AttestationActivity.this, "Incorrect Match", Toast.LENGTH_LONG).show();
                     }
-
-//                   Toast.makeText(AttestationActivity.this,"form :"+FormUID, Toast.LENGTH_LONG).show();
                 }
                 else
                 {
@@ -113,11 +117,13 @@ public class AttestationActivity extends AppCompatActivity{
         if(requestCode==101)
         {
             Uri uri=data.getData();
+            checkMark.setVisibility(View.INVISIBLE);
             originalImage.setImageURI(uri);
         }
         else if(requestCode==102)
         {
             Uri uri=data.getData();
+            checkMark.setVisibility(View.INVISIBLE);
             formImage.setImageURI(uri);
         }
     }
