@@ -85,7 +85,7 @@ public class AttestationActivity extends AppCompatActivity{
 
                     if(UID.equals(FormUID))
                     {
-                        Toast.makeText(AttestationActivity.this, "Verified", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AttestationActivity.this, "UID Verified Successfully!!!", Toast.LENGTH_LONG).show();
                         checkMark.setImageResource(R.drawable.check_mark);
                         checkMark.setVisibility(View.VISIBLE);
                     }
@@ -93,7 +93,7 @@ public class AttestationActivity extends AppCompatActivity{
                     {
                         checkMark.setImageResource(R.drawable.cross_check_mark);
                         checkMark.setVisibility(View.VISIBLE);
-                        Toast.makeText(AttestationActivity.this, "Incorrect Match", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AttestationActivity.this, "Your Submission has mismatching info, We need to manually review.", Toast.LENGTH_LONG).show();
                     }
                 }
                 else
