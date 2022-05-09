@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".PersistenceActivity">
     <Button
-        android:id="@+id/validate"
+        android:id="@+id/persistenceValidate"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginBottom="25dp"
@@ -19,9 +19,9 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <ScrollView
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="680dp"
-        app:layout_constraintBottom_toTopOf="@+id/validate"
+        app:layout_constraintBottom_toTopOf="@+id/persistenceValidate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,9 +30,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="3dp"
-            android:layout_marginRight="3dp">
+            android:orientation="vertical">
 
             <!--row linear1-->
             <LinearLayout
@@ -51,7 +49,7 @@
                         android:src="@drawable/a1"
                         android:layout_margin="2dp"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F1"
@@ -71,7 +69,7 @@
                         android:background="@drawable/image_border"
                         />
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:id="@+id/resultTV1"
                         android:layout_margin="3dp"
@@ -97,7 +95,7 @@
                         android:id="@+id/A2"
                         android:src="@drawable/a2"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F2"
@@ -117,7 +115,7 @@
                         android:background="@drawable/image_border"
                         />
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV2"
@@ -142,7 +140,7 @@
                         android:id="@+id/A3"
                         android:src="@drawable/a3"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F3"
@@ -161,7 +159,7 @@
                         android:id="@+id/uidTV3"
                         android:background="@drawable/image_border"/>
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV3"
@@ -186,7 +184,7 @@
                         android:id="@+id/A4"
                         android:src="@drawable/a4"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F4"
@@ -205,7 +203,7 @@
                         android:id="@+id/uidTV4"
                         android:background="@drawable/image_border"/>
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV4"
@@ -230,7 +228,7 @@
                         android:id="@+id/A5"
                         android:src="@drawable/a5"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F5"
@@ -249,7 +247,7 @@
                         android:id="@+id/uidTV5"
                         android:background="@drawable/image_border"/>
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV5"
@@ -274,7 +272,7 @@
                         android:id="@+id/A6"
                         android:src="@drawable/a6"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F6"
@@ -293,7 +291,7 @@
                         android:id="@+id/uidTV6"
                         android:background="@drawable/image_border"/>
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV6"
@@ -318,7 +316,7 @@
                         android:id="@+id/A7"
                         android:src="@drawable/a7"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F7"
@@ -337,7 +335,7 @@
                         android:id="@+id/uidTV7"
                         android:background="@drawable/image_border"/>
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV7"
@@ -362,7 +360,7 @@
                         android:id="@+id/A8"
                         android:src="@drawable/a8"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F8"
@@ -381,7 +379,7 @@
                         android:id="@+id/uidTV8"
                         android:background="@drawable/image_border"/>
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV8"
@@ -406,7 +404,7 @@
                         android:id="@+id/A9"
                         android:src="@drawable/a9"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F9"
@@ -425,7 +423,7 @@
                         android:id="@+id/uidTV9"
                         android:background="@drawable/image_border"/>
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV9"
@@ -450,10 +448,10 @@
                         android:id="@+id/A10"
                         android:src="@drawable/a10"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
-                        android:id="@+id/F110"
+                        android:id="@+id/F10"
                         android:src="@drawable/f10"
                         />
                 </LinearLayout>
@@ -469,7 +467,7 @@
                         android:id="@+id/uidTV10"
                         android:background="@drawable/image_border"/>
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV10"
@@ -494,7 +492,7 @@
                         android:id="@+id/A11"
                         android:src="@drawable/a11"/>
                     <ImageView
-                        android:layout_width="200dp"
+                        android:layout_width="190dp"
                         android:layout_height="match_parent"
                         android:layout_margin="2dp"
                         android:id="@+id/F11"
@@ -513,7 +511,7 @@
                         android:id="@+id/uidTV11"
                         android:background="@drawable/image_border"/>
                     <TextView
-                        android:layout_width="200dp"
+                        android:layout_width="180dp"
                         android:layout_height="match_parent"
                         android:layout_margin="3dp"
                         android:id="@+id/resultTV11"

@@ -94,12 +94,7 @@ public class Validation {
     {
         int startIndex=-1,endIndex=0,count=0;
         char stringArray[] = str.toCharArray();
-        for (int i = 0; i < stringArray.length; i++) {
-            if(count==12)
-            {
-                endIndex=i;
-                break;
-            }
+        for (int i = 0; i < stringArray.length; i++) {   //string.length is 23
             if(stringArray[i]>=48 && stringArray[i]<=57)
             {
                 if(startIndex==-1)
@@ -107,6 +102,11 @@ public class Validation {
                     startIndex=i;
                 }
                 count++;
+                if(count==12)
+                {
+                    endIndex=i+1;
+                    break;
+                }
             }
             else
             {

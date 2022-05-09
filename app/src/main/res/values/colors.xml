@@ -12,4 +12,6 @@
     <color name="white">#FFFFFF</color>
     <color name="light_grey">#EDEDED</color>
     <color name="signupColor">#066e8a</color>
+    <color name="red">#E04D01</color>
+    <color name="yellow">#FCD900</color>
 </resources>

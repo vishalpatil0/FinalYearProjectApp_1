@@ -93,7 +93,7 @@ public class TranslationFragment extends Fragment {
                      google.setVisibility(View.VISIBLE);
                      detect.setVisibility(View.INVISIBLE);
                      detect.setClickable(false);
-//                     Toast.makeText(getContext(), extractedData, Toast.LENGTH_LONG).show();
+                     Toast.makeText(getContext(), "Successfully Detected", Toast.LENGTH_SHORT).show();
 
                  } else {
                      Toast.makeText(getContext(), "Please import your image first", Toast.LENGTH_SHORT).show();
