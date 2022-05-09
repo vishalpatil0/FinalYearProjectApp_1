@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Attesta">
         <activity
+            android:name=".PersistenceActivity"
+            android:parentActivityName=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".Guidlines"
             android:exported="false" />
         <activity
