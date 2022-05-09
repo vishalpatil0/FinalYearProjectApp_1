@@ -125,4 +125,56 @@ public class Validation {
     {
         this.originalImage=InputImage.fromBitmap(bitmap,0);
     }
+
+    /**
+     * This function returns the string with spaces in it.
+     * @return recognized text
+     */
+    public String detectText()
+    {
+        final String[] UID = {""};
+        Task<Text> result =
+                recognizer.process(originalImage)
+                        .addOnSuccessListener(new OnSuccessListener<Text>() {
+                            @Override
+                            public void onSuccess(Text visionText) {
+                                Log.d("recognizer is successful","InputImage got recognized successfully");
+                            }
+                        })
+                        .addOnFailureListener(
+                                new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(context, "Failed to detect text form image..", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                });
+        //Infinite loop
+        while(true)
+        {
+            if(result.isComplete())
+            {
+                if(result.isSuccessful())
+                {
+                    List<Text.TextBlock> textBlocks=result.getResult().getTextBlocks();
+                    for(int i=0;i<textBlocks.size();i++)
+                    {
+                        List<Text.Line> textLines=textBlocks.get(i).getLines();
+                        for(int j=0;j<textLines.size();j++)
+                        {
+                            UID[0]+=textLines.get(j).getText();
+                        }
+                        UID[0]+="\n";
+                    }
+                }
+                else
+                {
+                    UID[0]="Failed";
+                    Log.d("result failed","TextRecognizer failed due to some reason");
+                }
+                break;
+            }
+        }
+        return UID[0].trim();
+    }
 }
