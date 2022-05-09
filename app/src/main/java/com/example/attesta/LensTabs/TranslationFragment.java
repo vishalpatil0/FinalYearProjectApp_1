@@ -1,6 +1,8 @@
 package com.example.attesta.LensTabs;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.attesta.AttestationActivity;
 import com.example.attesta.R;
+import com.example.attesta.Validation;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -45,12 +48,10 @@ public class TranslationFragment extends Fragment {
          detect.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 if(lensImage.getDrawable()!=null)
-                 {
-
-                 }
-                 else
-                 {
+                 if(lensImage.getDrawable()!=null) {
+                     BitmapDrawable bitmapDrawable=(BitmapDrawable) lensImage.getDrawable();
+                     Validation validation=new Validation(getContext(),bitmapDrawable.getBitmap());
+                 } else {
                      Toast.makeText(getContext(), "Please import your image first", Toast.LENGTH_SHORT).show();
                  }
              }
@@ -61,7 +62,9 @@ public class TranslationFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
-            Uri uri=data.getData();
+        if(requestCode==103) {
+            Uri uri = data.getData();
             lensImage.setImageURI(uri);
+        }
     }
 }

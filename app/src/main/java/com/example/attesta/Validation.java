@@ -2,6 +2,7 @@ package com.example.attesta;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -28,7 +29,7 @@ public class Validation {
      *
      * @param bitmap bitmap of images from imageviews on attesation_activity
      */
-    Validation(Context context,Bitmap bitmap)
+    public Validation(Context context,Bitmap bitmap)
     {
         this.context=context;
         originalImage=InputImage.fromBitmap(bitmap,0);
