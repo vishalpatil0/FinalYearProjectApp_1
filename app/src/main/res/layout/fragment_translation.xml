@@ -76,7 +76,7 @@
                 android:id="@+id/clipboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="33dp"
                 android:background="@drawable/btn_back"
                 android:visibility="invisible"
                 android:clickable="false"
@@ -99,9 +99,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"
+                android:background="@drawable/btn_back"
                 android:clickable="false"
                 android:layout_marginLeft="5dp"
                 android:text="Google"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/call"
+                android:text="Call"
+                android:layout_marginLeft="45dp"
+                android:background="@drawable/btn_back"
+                android:clickable="false"
+                android:visibility="invisible"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/translateText"
+                android:layout_marginLeft="30dp"
+                android:text="Translate"
+                android:visibility="invisible"
+                android:clickable="false"
+                android:background="@drawable/btn_back"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

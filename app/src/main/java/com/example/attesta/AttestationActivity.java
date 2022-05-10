@@ -100,7 +100,7 @@ public class AttestationActivity extends AppCompatActivity{
                 {
                     Toast.makeText(AttestationActivity.this, "Please import your images first", Toast.LENGTH_SHORT).show();
                 }
-                progressBar.setVisibility(View.INVISIBLE);
+//                progressBar.setVisibility(View.INVISIBLE);
             }
         });
     }

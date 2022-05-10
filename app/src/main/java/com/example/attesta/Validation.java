@@ -22,7 +22,7 @@ import java.util.List;
 public class Validation {
     private InputImage originalImage;
     private Context context;
-    private String UID_Data="";
+    private String UID_Data="",mobileNo;
     private TextRecognizer recognizer;
 
     /**
@@ -89,6 +89,40 @@ public class Validation {
             }
         }
         return UID[0];
+    }
+    public boolean checkMobile(String str)
+    {
+        int startIndex=-1,endIndex=0,count=0;
+        char stringArray[] = str.toCharArray();
+        for (int i = 0; i < stringArray.length; i++) {   //string.length is 23
+            if(stringArray[i]>=48 && stringArray[i]<=57)
+            {
+                if(startIndex==-1)
+                {
+                    startIndex=i;
+                }
+                count++;
+                if(count==10)
+                {
+                    endIndex=i+1;
+                    break;
+                }
+            }
+            else
+            {
+                startIndex=-1;
+                count=0;
+            }
+        }
+        if(startIndex!=-1 && endIndex!=0)
+        {
+            mobileNo=str.substring(startIndex,endIndex);
+        }
+        if(count==10)
+        {
+            return true;
+        }
+        return false;
     }
     public String extractor(String str)
     {
@@ -176,5 +210,9 @@ public class Validation {
             }
         }
         return UID[0].trim();
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
     }
 }

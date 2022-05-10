@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:scrollbars="vertical"
+    android:id="@+id/text_Activity"
+    android:padding="5dp"
+    android:textIsSelectable="true"
+    android:layout_height="match_parent"
+    tools:context=".TextActivity">
+
+</TextView>

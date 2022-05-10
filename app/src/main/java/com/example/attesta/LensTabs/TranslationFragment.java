@@ -1,22 +1,22 @@
 package com.example.attesta.LensTabs;
 
-
-
-
-
 import static android.content.Context.CLIPBOARD_SERVICE;
 import static androidx.core.content.ContextCompat.getSystemService;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.speech.tts.TextToSpeech;
@@ -29,6 +29,8 @@ import android.widget.Toast;
 
 import com.example.attesta.AttestationActivity;
 import com.example.attesta.R;
+import com.example.attesta.TextActivity;
+import com.example.attesta.TranslatorActivity;
 import com.example.attesta.Validation;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -42,10 +44,11 @@ public class TranslationFragment extends Fragment {
     }
 
     private ImageView lensImage;
-    private Button detect,speech,clipboard,viewText,google;
-    private String extractedData;
+    private Button detect,speech,clipboard,viewText,google,call,translate;
+    private String extractedData,mobileNo;
     private FloatingActionButton lensImageButton;
     private TextToSpeech textToSpeech;
+    private static final int CALL_PERMISSION_CODE = 100;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +59,8 @@ public class TranslationFragment extends Fragment {
          clipboard=view.findViewById(R.id.clipboard);
          viewText=view.findViewById(R.id.viewText);
          google=view.findViewById(R.id.google);
+         call=view.findViewById(R.id.call);
+         translate=view.findViewById(R.id.translateText);
          lensImageButton=view.findViewById(R.id.lensImageButton);
          textToSpeech=new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -91,6 +96,14 @@ public class TranslationFragment extends Fragment {
                      viewText.setClickable(true);
                      google.setClickable(true);
                      google.setVisibility(View.VISIBLE);
+                     translate.setClickable(true);
+                     translate.setVisibility(View.VISIBLE);
+                     if(validation.checkMobile(extractedData))
+                     {
+                         call.setVisibility(View.VISIBLE);
+                         call.setClickable(true);
+                         mobileNo=validation.getMobileNo();
+                     }
                      detect.setVisibility(View.INVISIBLE);
                      detect.setClickable(false);
                      Toast.makeText(getContext(), "Successfully Detected", Toast.LENGTH_SHORT).show();
@@ -122,6 +135,34 @@ public class TranslationFragment extends Fragment {
                  startActivity(browserIntent);
              }
          });
+         viewText.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intent=new Intent(getActivity(), TextActivity.class);
+                 intent.putExtra("extractedData",extractedData);
+                 startActivity(intent);
+             }
+         });
+         call.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 mobileNo.trim();
+                 if(checkPermission(Manifest.permission.CALL_PHONE,CALL_PERMISSION_CODE)) {
+                     Intent callIntent = new Intent(Intent.ACTION_CALL);
+                     callIntent.setData(Uri.parse("tel:" + mobileNo));
+                     callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                     startActivity(callIntent);
+                 }
+             }
+         });
+         translate.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intent=new Intent(getActivity(), TranslatorActivity.class);
+                 intent.putExtra("extractedData",extractedData);
+                 startActivity(intent);
+             }
+         });
          return view;
     }
 
@@ -139,8 +180,39 @@ public class TranslationFragment extends Fragment {
             viewText.setClickable(false);
             google.setVisibility(View.INVISIBLE);
             google.setClickable(false);
+            call.setVisibility(View.INVISIBLE);
+            call.setClickable(false);
+            translate.setVisibility(View.INVISIBLE);
+            translate.setClickable(false);
             detect.setVisibility(View.VISIBLE);
             detect.setClickable(true);
+        }
+    }
+
+    public boolean checkPermission(String permission, int requestCode)
+    {
+        if (ContextCompat.checkSelfPermission(getContext(), permission) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[] { permission }, requestCode);
+            return false;
+        }
+        return true;
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode,
+                permissions,
+                grantResults);
+
+        if (requestCode == CALL_PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(getContext(), "Camera Permission Granted", Toast.LENGTH_SHORT) .show();
+            }
+            else {
+                Toast.makeText(getContext(), "Camera Permission Denied", Toast.LENGTH_SHORT) .show();
+            }
         }
     }
 }
