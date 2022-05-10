@@ -66,41 +66,51 @@ public class AttestationActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                if(originalImage.getDrawable()!=null && formImage.getDrawable()!=null)
-                {
-                    BitmapDrawable bitmapDrawable1= (BitmapDrawable) originalImage.getDrawable();
-                    Bitmap originalImageBitmap = bitmapDrawable1.getBitmap();
 
-                    BitmapDrawable bitmapDrawable2= (BitmapDrawable) formImage.getDrawable();
-                    Bitmap formImageBitmap= bitmapDrawable2.getBitmap();
+                new Thread(new Runnable() {
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override public void run() {
+                                if(originalImage.getDrawable()!=null && formImage.getDrawable()!=null)
+                                {
+                                    BitmapDrawable bitmapDrawable1= (BitmapDrawable) originalImage.getDrawable();
+                                    Bitmap originalImageBitmap = bitmapDrawable1.getBitmap();
 
-                    String UID="",FormUID="";
-                    Validation validation=new Validation(AttestationActivity.this,originalImageBitmap);
-                    UID=validation.detect();
-                    UID=validation.extractor(UID);
+                                    BitmapDrawable bitmapDrawable2= (BitmapDrawable) formImage.getDrawable();
+                                    Bitmap formImageBitmap= bitmapDrawable2.getBitmap();
 
-                    validation.setImageBitmap(formImageBitmap);
-                    FormUID=validation.detect();
-                    FormUID=validation.extractor(FormUID);
+                                    String UID="",FormUID="";
+                                    Validation validation=new Validation(AttestationActivity.this,originalImageBitmap);
+                                    UID=validation.detect();
+                                    UID=validation.extractor(UID);
 
-                    if(UID.equals(FormUID))
-                    {
-                        Toast.makeText(AttestationActivity.this, "UID Verified Successfully!!!", Toast.LENGTH_LONG).show();
-                        checkMark.setImageResource(R.drawable.check_mark);
-                        checkMark.setVisibility(View.VISIBLE);
+                                    validation.setImageBitmap(formImageBitmap);
+                                    FormUID=validation.detect();
+                                    FormUID=validation.extractor(FormUID);
+
+                                    if(UID.equals(FormUID))
+                                    {
+                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(AttestationActivity.this, "UID Verified Successfully!!!", Toast.LENGTH_LONG).show();
+                                        checkMark.setImageResource(R.drawable.check_mark);
+                                        checkMark.setVisibility(View.VISIBLE);
+                                    }
+                                    else
+                                    {
+                                        checkMark.setImageResource(R.drawable.cross_check_mark);
+                                        checkMark.setVisibility(View.VISIBLE);
+                                        Toast.makeText(AttestationActivity.this, "Your Submission has mismatching info, We need to manually review.", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                                else
+                                {
+                                    Toast.makeText(AttestationActivity.this, "Please import your images first", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }); // runOnUIthread
+
                     }
-                    else
-                    {
-                        checkMark.setImageResource(R.drawable.cross_check_mark);
-                        checkMark.setVisibility(View.VISIBLE);
-                        Toast.makeText(AttestationActivity.this, "Your Submission has mismatching info, We need to manually review.", Toast.LENGTH_LONG).show();
-                    }
-                }
-                else
-                {
-                    Toast.makeText(AttestationActivity.this, "Please import your images first", Toast.LENGTH_SHORT).show();
-                }
-//                progressBar.setVisibility(View.INVISIBLE);
+                }).start();
             }
         });
     }
