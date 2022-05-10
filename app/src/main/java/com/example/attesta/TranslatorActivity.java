@@ -95,7 +95,7 @@ public class TranslatorActivity extends AppCompatActivity {
             }
         });
     }
-    public int getLanguageCode(String language){
+    public static int getLanguageCode(String language){
         int languageCode=0;
         switch (language){
             case "English":

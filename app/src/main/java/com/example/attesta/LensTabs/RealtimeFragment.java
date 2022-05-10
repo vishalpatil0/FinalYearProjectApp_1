@@ -1,6 +1,7 @@
 package com.example.attesta.LensTabs;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
@@ -15,13 +16,24 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.attesta.R;
+import com.example.attesta.TranslatorActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
+import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
+import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslator;
+import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOptions;
 
 public class RealtimeFragment extends Fragment {
 
@@ -32,6 +44,9 @@ public class RealtimeFragment extends Fragment {
     TextView textView;
     SurfaceView surfaceView;
     CameraSource cameraSource;
+    String[] languages={"English","Afrikaans","Arabic","Belarusian","Bulgarian","Bengali","Hindi","Marathi"};
+    int toLanguage=0;
+    Spinner spinner;
     public static final int PERMISSION=100;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +54,22 @@ public class RealtimeFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_realtime, container, false);
         textView=view.findViewById(R.id.textview);
         surfaceView=view.findViewById(R.id.surfaceView);
+        spinner=view.findViewById(R.id.spinnerRealtime);
+        ArrayAdapter arrayAdapter=new ArrayAdapter(getContext(),R.layout.spinner_item,languages);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                toLanguage= TranslatorActivity.getLanguageCode(languages[i]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         startCameraSource();
         return view;
     }
@@ -97,7 +128,36 @@ public class RealtimeFragment extends Fragment {
                                     stringBuilder.append(item.getValue());
                                     stringBuilder.append("\n");
                                 }
-                                textView.setText(stringBuilder.toString());
+                                FirebaseTranslatorOptions options=new FirebaseTranslatorOptions.Builder()
+                                        .setSourceLanguage(11)
+                                        .setTargetLanguage(toLanguage)
+                                        .build();
+
+                                FirebaseTranslator translator= FirebaseNaturalLanguage.getInstance().getTranslator(options);
+
+                                FirebaseModelDownloadConditions conditions =new FirebaseModelDownloadConditions.Builder().build();
+
+                                translator.downloadModelIfNeeded(conditions).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        translator.translate(stringBuilder.toString()).addOnSuccessListener(new OnSuccessListener<String>() {
+                                            @Override
+                                            public void onSuccess(String s) {
+                                                textView.setText(s);
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(getContext(), "Failed to translate "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getContext(), "Failed to download the language model "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
                         });
                     }
