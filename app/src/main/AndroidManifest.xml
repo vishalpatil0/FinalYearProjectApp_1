@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Attesta">
         <activity
+            android:name=".SystemActivity"
+            android:parentActivityName=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".TranslatorActivity"
             android:exported="false" />
         <activity
