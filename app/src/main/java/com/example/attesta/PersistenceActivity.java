@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -42,57 +43,72 @@ public class PersistenceActivity extends AppCompatActivity {
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = 1; i <=11; i++) {
-                    String adharUID,formUID;
+                final ProgressDialog progress = ProgressDialog.show(PersistenceActivity.this,
+                        "Attesting", "Validating Documents", true, false);
 
-                    //adhar image string extractor
-                    temp=adharName+String.valueOf(i);
-                    int resID=getResources().getIdentifier(temp,"id",getPackageName());
-                    imageView=findViewById(resID);
-                    bitmapDrawable=(BitmapDrawable) imageView.getDrawable();
-                    Validation validation=new Validation(PersistenceActivity.this,bitmapDrawable.getBitmap());
-                        adharUID = validation.detect();
-                        adharUID = validation.extractor(adharUID);
+                new Thread(new Runnable() {
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override public void run() {
+                                for (int i = 1; i <=11; i++) {
+                                    String adharUID,formUID;
+
+                                    //adhar image string extractor
+                                    temp=adharName+String.valueOf(i);
+                                    int resID=getResources().getIdentifier(temp,"id",getPackageName());
+                                    imageView=findViewById(resID);
+                                    bitmapDrawable=(BitmapDrawable) imageView.getDrawable();
+                                    Validation validation=new Validation(PersistenceActivity.this,bitmapDrawable.getBitmap());
+                                    adharUID = validation.detect();
+                                    adharUID = validation.extractor(adharUID);
 
 
-                    //setting UID textview
-                    temp=uidTV+String.valueOf(i);
-                    resID=getResources().getIdentifier(temp,"id",getPackageName());
-                    textView=findViewById(resID);
-                    textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    textView.setTextColor(getColor(R.color.black));
-                    textView.setPadding(0,24,0,0);
-                    textView.setTextSize(20);
-                    textView.setText(adharUID);
+                                    //setting UID textview
+                                    temp=uidTV+String.valueOf(i);
+                                    resID=getResources().getIdentifier(temp,"id",getPackageName());
+                                    textView=findViewById(resID);
+                                    textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    textView.setTextColor(getColor(R.color.black));
+                                    textView.setPadding(0,24,0,0);
+                                    textView.setTextSize(20);
+                                    textView.setText(adharUID);
 
-                    //form image string extractor
-                    temp=formName+String.valueOf(i);
-                    resID=getResources().getIdentifier(temp,"id",getPackageName());
-                    imageView=findViewById(resID);
-                    bitmapDrawable=(BitmapDrawable) imageView.getDrawable();
-                    validation.setImageBitmap(bitmapDrawable.getBitmap());
-                    formUID=validation.detect();
-                    formUID=validation.extractor(formUID);
+                                    //form image string extractor
+                                    temp=formName+String.valueOf(i);
+                                    resID=getResources().getIdentifier(temp,"id",getPackageName());
+                                    imageView=findViewById(resID);
+                                    bitmapDrawable=(BitmapDrawable) imageView.getDrawable();
+                                    validation.setImageBitmap(bitmapDrawable.getBitmap());
+                                    formUID=validation.detect();
+                                    formUID=validation.extractor(formUID);
 
-                    //comparing the UID's
-                    temp=resultTv+String.valueOf(i);
-                    resID=getResources().getIdentifier(temp,"id",getPackageName());
-                    textView=findViewById(resID);
-                    textView.setTextSize(20);
-                    textView.setBackgroundColor(Color.GRAY);
-                    textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    textView.setPadding(0,24,0,0);
-                    if(adharUID.equals(formUID))
-                    {
-                        textView.setText("Verified");
-                        textView.setTextColor(Color.GREEN);
+                                    //comparing the UID's
+                                    temp=resultTv+String.valueOf(i);
+                                    resID=getResources().getIdentifier(temp,"id",getPackageName());
+                                    textView=findViewById(resID);
+                                    textView.setTextSize(20);
+                                    textView.setBackgroundColor(Color.GRAY);
+                                    textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                    textView.setPadding(0,24,0,0);
+                                    if(adharUID.equals(formUID))
+                                    {
+                                        textView.setText("Verified");
+                                        textView.setTextColor(Color.GREEN);
+                                    }
+                                    else
+                                    {
+                                        textView.setText("Not matched!");
+                                        textView.setTextColor(getColor(R.color.yellow));
+                                    }
+                                }
+                                progress.cancel();
+                            }
+                        }); // runOnUIthread
+
                     }
-                    else
-                    {
-                        textView.setText("Not matched!");
-                        textView.setTextColor(getColor(R.color.yellow));
-                    }
-                }
+                }).start();
+
+
             }
         });
     }
