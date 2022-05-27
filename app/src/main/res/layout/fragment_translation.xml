@@ -34,9 +34,10 @@
 
         <Button
             android:id="@+id/detect"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Detect"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="@id/CT_Parent"
             app:layout_constraintLeft_toLeftOf="@id/CT_Parent"
             app:layout_constraintRight_toRightOf="@id/CT_Parent"
@@ -47,40 +48,45 @@
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:layout_marginHorizontal="3dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
+            app:layout_constraintHorizontal_bias="0.551"
             app:layout_constraintLeft_toLeftOf="@id/CT_Parent"
             app:layout_constraintRight_toRightOf="@id/CT_Parent"
             app:layout_constraintTop_toBottomOf="@id/detect">
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/speech"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:clickable="false"
-                android:visibility="invisible"
+                android:textSize="10dp"
                 android:background="@drawable/btn_back"
+                android:clickable="false"
                 android:text="Speech"
-                android:id="@+id/speech"/>
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/viewText"
-                android:layout_width="wrap_content"
+                android:textSize="10dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="45dp"
-                android:visibility="invisible"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/btn_back"
                 android:clickable="false"
-                android:text="View" />
+                android:text="View"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/clipboard"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="33dp"
+                android:textSize="10dp"
+                android:layout_marginLeft="20dp"
                 android:background="@drawable/btn_back"
-                android:visibility="invisible"
                 android:clickable="false"
-                android:text="Copy" />
+                android:text="Copy"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
@@ -88,41 +94,45 @@
             android:layout_width="match_parent"
             android:layout_height="51dp"
             android:layout_marginHorizontal="3dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="70dp"
             android:orientation="horizontal"
+            app:layout_constraintHorizontal_bias="0.448"
             app:layout_constraintLeft_toLeftOf="@id/CT_Parent"
             app:layout_constraintRight_toRightOf="@id/CT_Parent"
             app:layout_constraintTop_toBottomOf="@id/detect">
 
             <Button
                 android:id="@+id/google"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
-                android:background="@drawable/btn_back"
-                android:clickable="false"
                 android:layout_marginLeft="5dp"
-                android:text="Google"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/call"
-                android:text="Call"
-                android:layout_marginLeft="45dp"
                 android:background="@drawable/btn_back"
                 android:clickable="false"
-                android:visibility="invisible"/>
+                android:textSize="10dp"
+                android:text="Google"
+                android:visibility="invisible" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/call"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/translateText"
-                android:layout_marginLeft="30dp"
-                android:text="Translate"
-                android:visibility="invisible"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/btn_back"
                 android:clickable="false"
-                android:background="@drawable/btn_back"/>
+                android:textSize="10dp"
+                android:text="Call"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/Translate"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/btn_back"
+                android:clickable="false"
+                android:textSize="10dp"
+                android:text="Translate"
+                android:visibility="invisible" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
