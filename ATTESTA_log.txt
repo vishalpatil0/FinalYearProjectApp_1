@@ -1,0 +1,267 @@
+commit f0c2525bc358c8dad21fa409f52e9ca5693051a4
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue May 10 20:23:55 2022 +0530
+
+    Completed account delete procedure of System Activity
+
+commit db84f8d584686c58c2dd9d39e093d1cfd3f4e975
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue May 10 19:58:07 2022 +0530
+
+    Created system activity
+
+commit 524babe9fcd38bda7b86eea4ce0b2d51a1c9a8a5
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue May 10 19:53:06 2022 +0530
+
+    Resolved the issue of progress bar on Attestation Acitivity
+
+commit d1cf23de533a425e93e0314f8fca492d3616edad
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue May 10 19:46:04 2022 +0530
+
+    Completed progrss dialog of PersistenceActivity
+
+commit d804cc7d06e41dbaea4df86bde17b5ebbd7ad487
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue May 10 19:26:48 2022 +0530
+
+    Completd translation part on real time tab of lensAcitivity
+
+commit 308e9b49e3c1293e65c47f9a19055f9240f0e016
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue May 10 19:04:27 2022 +0530
+
+    Completed Translation tab in LensActivity
+
+commit 41d908a474ef2b96dcde2a01ed267febb7495d01
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue May 10 02:15:59 2022 +0530
+
+    Completed backend code of persistence activity
+
+commit e94f6be9cdd89dec2a541719e3882d8d9da57024
+Merge: 834290c bb81e0f
+Author: Vishal Patil <46533610+vishalpatil0@users.noreply.github.com>
+Date:   Tue May 10 00:20:59 2022 +0530
+
+    Merge pull request #3 from asim-ibushe/main
+    
+    Completed the front-end of persistence activity
+
+commit 834290cbd1d985870e921264d128ced03714956d
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue May 10 00:17:58 2022 +0530
+
+    Completed copy,google,text to speech functions of lens activity
+
+commit bb81e0f3a075798f4c89c582b005eae66ae50f17
+Author: asim <asimibushe99@gmail.com>
+Date:   Tue May 10 00:16:09 2022 +0530
+
+    Completed the front-end of persistence activity
+
+commit d116a7a5daf0c7773472509ffc9d8a74d005251a
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Mon May 9 21:00:20 2022 +0530
+
+    Added persistence activity
+
+commit 3d65f9f419a0eaa752652d2de5285904ab864dfc
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Mon May 9 15:12:42 2022 +0530
+
+    Minor changes
+
+commit 2f9fb2fc7890ecd4cff64f026a2a8b14893aab72
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sat May 7 21:17:28 2022 +0530
+
+    Added finish for guildlines activity and resolve the image picker issue
+
+commit 79fd6ad6be06a75176a6caf343bfc76b54eff51a
+Merge: bc78f01 2041d26
+Author: Vishal Patil <46533610+vishalpatil0@users.noreply.github.com>
+Date:   Sat May 7 20:38:36 2022 +0530
+
+    Merge pull request #2 from asim-ibushe/main
+    
+    Guidlines Activity added
+
+commit 2041d26cd1eb6c5fc8182285b0e3c8f25c14f15a
+Author: asim <asimibushe99@gmail.com>
+Date:   Sat May 7 18:51:51 2022 +0530
+
+    Guidlines Activity added
+
+commit bc78f016a8ea1c19c62505b8876963f32891c49e
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sat May 7 17:00:48 2022 +0530
+
+    Added verification mark in attesatation activity
+
+commit 9efa3486654cb6566a408a022884a90694d94727
+Merge: 4db560e bdb33bb
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sat May 7 16:26:07 2022 +0530
+
+    Solved build.gradle merge conflicts
+
+commit 4db560e6e200d300bf93caf63a115b3b0c5634ce
+Merge: 948cc93 4fe45a2
+Author: Vishal Patil <46533610+vishalpatil0@users.noreply.github.com>
+Date:   Sat Apr 30 17:38:14 2022 +0530
+
+    Merge pull request #1 from asim-ibushe/main
+    
+    Comparision of UIDs from both images got completed
+
+commit 4fe45a2bda232c11752400363f565b09b3f8f22f
+Author: asim <asimibushe99@gmail.com>
+Date:   Sat Apr 30 17:29:02 2022 +0530
+
+    comparision of UIDs from both images got completed
+
+commit 948cc93ca35bc562ff127a5d72f12cfaf8271a3a
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sat Apr 30 14:41:21 2022 +0530
+
+    Added validation java class
+
+commit bdb33bb4f9a7855d1a7fa716bb0cc2c0fb48705c
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Thu Apr 28 23:55:36 2022 +0530
+
+    Added tabLayout in LensActivity with real time text recognisition
+
+commit c46e33d8d0c2ba99116dfda944f3af957853a68e
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Wed Apr 27 01:14:36 2022 +0530
+
+    Added back to Home Acitivity button in Attestation Activity
+
+commit d37a0622a282cbb65a144b9e0d9d3b72f981dbbf
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue Apr 26 15:43:50 2022 +0530
+
+    added appbar in homeacitivity
+
+commit ff912235a83af7a3302d1b312bc01a53c3080c52
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Tue Apr 26 16:07:05 2022 +0530
+
+    added image border and camera icon of attestation acitivity
+
+commit 6faf6ec8af159d1c1b30f533a20837a4477a899b
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Mon Apr 25 16:22:24 2022 +0530
+
+    added lens activity
+
+commit 3a1f9a92171895cd7421bf6392d05b09aef0f6e3
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Mon Apr 25 16:16:24 2022 +0530
+
+    Implemented remember me function
+
+commit ca7bc55f85ec04321b5e25c2c507d1be37e3bf6c
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Mon Apr 25 01:29:50 2022 +0530
+
+    Established firestore connection, User profile is able to store on firestore, new view element added
+
+commit 77181a95409ad9712e46639327cbb3ecb687c8a9
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sun Apr 24 23:36:49 2022 +0530
+
+    Completed the login, logout for firebase
+
+commit a13f8b1706579daffd8abc00b1b36887400a468a
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sun Apr 24 20:42:04 2022 +0530
+
+    solved the fullname issue
+
+commit 856d514400a1f2427a715ec65141d75e64b09fba
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sun Apr 24 17:36:04 2022 +0530
+
+    done the user creation firebase part
+
+commit 1f298360b93557ced2b5a6da192a7295b01b2fc1
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sun Apr 24 16:21:06 2022 +0530
+
+    completed the password listener part and changed the name of theme
+
+commit 21d57a28e331b97377a41ff0fd55bd448dbcfba9
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sun Apr 24 12:51:51 2022 +0530
+
+    Added validation for fullname and email on regiserAcitivity and LoginActivity
+
+commit f6cdf0eb398884e052e885ccd4bc00f127299cac
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Sat Apr 23 13:24:20 2022 +0530
+
+    Changed the project name and package name to Attesta
+
+commit 01bb75d858158d3e510a58cd7589bce4dd25686c
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Fri Apr 22 16:44:20 2022 +0530
+
+    Added register activity
+
+commit 8068e1915abb96cb50277cd3a6ad7991f189a095
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Fri Apr 22 12:49:09 2022 +0530
+
+    Resolved the issue of homeactivity : gridlayout and relative layout
+
+commit bf9b1144731d7683a27d84ac0c4d5fd0d1f71ef3
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Thu Apr 21 15:59:59 2022 +0530
+
+    Done the image picker part successfully
+
+commit c5045da24db52b12ceec71705885c21cdee55f17
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Thu Apr 21 13:43:27 2022 +0530
+
+    Minor changes in activity_home.xml linearlayout to textview with image
+
+commit 3f5c4c5cfc83468db51594956fdd662116fc50d8
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Thu Apr 21 13:01:53 2022 +0530
+
+    modified strings.xml and home activity file
+
+commit 480ebbca653e1c4fd301ecae0c607ce87c736355
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Thu Apr 21 12:00:41 2022 +0530
+
+    Completed the homeactivity layout
+
+commit 60ada8111cf3bcd10081c2806e6a9ec4d46a0f29
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Mon Apr 18 16:51:21 2022 +0530
+
+    Changed the title of application
+
+commit 9d9f6d8a5e761798c5c33d22bf321ffb62bc60d6
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Mon Apr 18 16:44:26 2022 +0530
+
+    gitignore got modified
+
+commit 20a51bc17d33a3fc92a97922c9eb28d41b103723
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Mon Apr 18 16:41:20 2022 +0530
+
+    login xml work finished
+
+commit ecd1edc3a050a0a09173cc6450444f080ca664f7
+Author: vishalpatil0 <vishalgpatil10@gmail.com>
+Date:   Wed Apr 13 21:16:56 2022 +0530
+
+    First Commit

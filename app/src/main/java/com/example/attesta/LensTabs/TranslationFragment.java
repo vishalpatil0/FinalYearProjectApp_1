@@ -1,20 +1,16 @@
 package com.example.attesta.LensTabs;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
-import static androidx.core.content.ContextCompat.getSystemService;
 
 import android.Manifest;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -27,7 +23,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.attesta.AttestationActivity;
 import com.example.attesta.R;
 import com.example.attesta.TextActivity;
 import com.example.attesta.TranslatorActivity;
@@ -60,7 +55,7 @@ public class TranslationFragment extends Fragment {
          viewText=view.findViewById(R.id.viewText);
          google=view.findViewById(R.id.google);
          call=view.findViewById(R.id.call);
-         translate=view.findViewById(R.id.translateText);
+         translate=view.findViewById(R.id.Translate);
          lensImageButton=view.findViewById(R.id.lensImageButton);
          textToSpeech=new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
             @Override
